@@ -1,5 +1,8 @@
 package CC150.PermutationSequence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by bliu on 4/13/16.
  * 数学规律。
@@ -17,5 +20,37 @@ package CC150.PermutationSequence;
  所以第三组的首个数字是4，依次类推，一直到n个数字全部算完为止。
  答案就出来了。
  */
+
 public class Solution {
+    public String getPermutation(int n, int k) {
+        List<Integer> array = new ArrayList<Integer>();
+        int sum = 1;
+        for(int i = 1; i <= n; i++){
+            array.add(i);
+            sum *= i;
+        }
+        //对于第一位（最高位）， 共有（n-1）(n-2)(n-3)(n-4)...1个组合，sum需要除以n
+        sum = sum/n;
+        //k--是因为array从0开始，查找第i位的数字实际上是i - 1
+        k--;
+        StringBuilder sb = new StringBuilder();
+        int size = array.size();
+        for(int i = 0; i < size - 1; i++){
+            //
+            int group = k/sum;
+            sb.append(array.get(group));
+            //找到第i位后，要把他从list里去掉，因为每个数字只能用一次
+            array.remove(group);
+            //更新k和sum
+            k %= sum;
+            sum /= (n - i - 1);
+        }
+        //最后一位不用算，因为只有一种选择，直接加到sb里
+        sb.append(array.get(0));
+        return sb.toString();
+    }
 }
+
+
+
+
