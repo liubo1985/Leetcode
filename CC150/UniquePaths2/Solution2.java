@@ -4,7 +4,7 @@ package CC150.UniquePaths2;
  * Created by bliu on 4/17/16.
  */
 
-public class Solution {
+public class Solution2 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int m = obstacleGrid.length;
         int n = obstacleGrid[0].length;
