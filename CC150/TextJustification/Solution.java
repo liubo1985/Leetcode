@@ -66,4 +66,13 @@ public class Solution {
         }
         return res;
     }
+
+    public static void main(String[] args){
+        String[] words = {""};
+        int L = 0;
+        Solution solution = new Solution();
+        List<String> list = new ArrayList<String>();
+        list = solution.fullJustify(words, L);
+
+    }
 }
