@@ -7,12 +7,15 @@ import java.util.List;
  * Created by bliu on 4/19/2016.
  */
 
+
 public class Solution {
     public List<String> fullJustify(String[] words, int maxWidth) {
-        if(words == null || maxWidth == 0){
-            return new ArrayList<String>();
-        }
         List<String> res = new ArrayList<String>();
+        if(words == null || maxWidth == 0){
+            res.add(words[0]);
+            return res;
+        }
+
         int i = 0;
         int len = words.length;
         while(i < len){
@@ -24,6 +27,7 @@ public class Solution {
                 j++;
             }
             StringBuilder line = new StringBuilder();
+            line.append(words[i]);
             //if last line
             if(j == len){
                 for(int k = i + 1; k < j; k++){
@@ -52,7 +56,7 @@ public class Solution {
                             line.append(" ");
 
                         }
-                        if(count < extraSpace % numSpace){
+                        if(count <= extraSpace % numSpace){
                             line.append(" ");
                             count++;
                         }
@@ -66,6 +70,7 @@ public class Solution {
         }
         return res;
     }
+
 
     public static void main(String[] args){
         String[] words = {""};
