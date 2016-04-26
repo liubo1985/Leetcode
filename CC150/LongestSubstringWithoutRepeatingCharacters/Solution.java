@@ -1,4 +1,4 @@
-package com.CC150.LongestSubstringWithoutRepeatingCharacters;
+package CC150.LongestSubstringWithoutRepeatingCharacters;
 
 import java.util.Arrays;
 
@@ -13,6 +13,8 @@ public class Solution{
             int slow = 0;
             int fast = 0;
             int ans = 0;
+        //mainten a window of non repeat characters, if find repeat charcter, move left pointer to
+        //next character of repeated charater, then move right pointer to next one
             for (fast = 0; fast < s.length(); fast++) {
                 int ch = s.charAt(fast);
                 while (map[ch]!=-1 && slow < fast) {
