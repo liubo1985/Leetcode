@@ -64,6 +64,7 @@ public class Solution {
                         if(map.get(s.charAt(left))>0)
                         {
                             counter--;
+                            break;
                         }
                     }
                     left++;

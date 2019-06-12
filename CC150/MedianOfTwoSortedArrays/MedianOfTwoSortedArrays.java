@@ -26,7 +26,7 @@ public class MedianOfTwoSortedArrays {
             if(A[aoffset + pa - 1] >= B[boffset + pb - 1])
                  return findKth(A,aoffset, m, B, boffset + pb, n - pb, k-pb);
             else return findKth(A, aoffset + pa, m - pa, B, boffset, n, k - pa);
-            }
+    }
 
 
     public static double findMedianSortedArrays(int A[], int B[]) {

@@ -25,17 +25,17 @@ public class Solution {
         if(root == null){
             return results;
         }
-        stack.push(root);
 
-        while(!stack.empty()){
-            TreeNode top = stack.pop();
-            results.add(top.val);
-            if(top.right != null){
-                stack.push(top.right);
+        TreeNode cur = root;
+        while(cur != null || !stack.empty()){
+
+            while(cur.left != null){
+                stack.add(cur);
+                cur = cur.left;
             }
-            if(top.left != null){
-                stack.push(top.left);
-            }
+            cur = stack.pop();
+            results.add(cur.val);
+            cur = cur.right;
         }
         return results;
     }
@@ -63,7 +63,7 @@ public class Solution {
         if(root == null){
             return;
         }
-        res.add(root.val);
         traveseTree(root.left, res);
+        res.add(root.val);
         traveseTree(root.right, res);
     }
