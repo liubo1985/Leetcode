@@ -1,9 +1,8 @@
-package CC150.RemoveDuplicatesfromSortedList;
+package CC150.RemoveDuplicatesFromSortedList;
 
 /**
- * Created by bliu on 4/27/2016.
+ * Created by bliu on 5/12/16.
  */
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -14,20 +13,24 @@ package CC150.RemoveDuplicatesfromSortedList;
  */
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null){
-            return null;
-        }
-        ListNode cur = head;
-        while(cur != null){
-            if(cur.next != null && cur.val == cur.next.val){
-                cur.next = cur.next.next;
+        ListNode dummy = new ListNode(Integer.MIN_VALUE);
+        dummy.next = head;
+        head = dummy;
 
+        ListNode next = head.next;
+        ListNode nonDup = head;
+        while(next != null){
+            if(next.val == nonDup.val){
+                next = next.next;
             }
             else{
-                cur = cur.next;
+                nonDup.next = next;
+                nonDup = next;
             }
         }
-        return head;
+        //Do not forget put null to the tail
+        nonDup.next = null;
+        return dummy.next;
     }
 
     public class ListNode {
