@@ -38,7 +38,7 @@ public class Solution {
             now.s = s;
 
         }
-
+p
     }
 
     public int[] dx = {-1, 0, 1, 0};
