@@ -20,8 +20,6 @@ public class Solution {
     public List<List<Integer>> helper(int[] nums, int index){
         List<List<Integer>> permutation = new ArrayList();
 
-
-
         if(index == 0){
             //list.add(nums[0]);
             permutation.add(new ArrayList<Integer>(nums[0]));

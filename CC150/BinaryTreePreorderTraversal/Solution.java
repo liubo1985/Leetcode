@@ -47,3 +47,23 @@ public class Solution {
         TreeNode(int x) { val = x; }
     }
 }
+
+
+// Solution 2
+    public List<Integer> preorderTraversal(TreeNode root) {
+        // write your code here
+        List<Integer> res = new ArrayList<Integer>();
+        if (root == null) {
+            return res;
+        }
+        traveseTree(root, res);
+        return res;
+    }
+    public void traveseTree(TreeNode root, List<Integer> res){
+        if(root == null){
+            return;
+        }
+        res.add(root.val);
+        traveseTree(root.left, res);
+        traveseTree(root.right, res);
+    }
