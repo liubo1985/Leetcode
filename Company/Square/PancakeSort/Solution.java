@@ -1,3 +1,5 @@
+
+
 class Solution {
     List<Integer> res = new ArrayList<>();
     public List<Integer> pancakeSort(int[] A) {

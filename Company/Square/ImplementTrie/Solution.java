@@ -1,25 +1,21 @@
 public class Trie {
 
-    class TrieNode{
-        char ch;
-        Map<Character, TrieNode> map = new HashMap<Character, TrieNode>();;
+    class Node{
+        String s;
         boolean isString;
-        String str;
-        TrieNode(char ch){
-            this.ch = ch;
-
+        Map<Character, Node> map;
+        Node(){
+            s = new String();
             isString = false;
-            str = "";
-        }
-        TrieNode(){
-
+            map = new HashMap<Character, Node>();
         }
     }
 
-    TrieNode root;
+    Node root;
+
     public Trie() {
         // do intialization if necessary
-        root = new TrieNode();
+        root = new Node();
     }
 
     /*
@@ -28,23 +24,15 @@ public class Trie {
      */
     public void insert(String word) {
         // write your code here
-        if (word == null || word.length() == 0){
-            return;
-        }
-        TrieNode curNode = root;
+        Node current = root;
         for (int i = 0; i < word.length(); i++){
-            char cur = word.charAt(i);
-            if (curNode.map.containsKey(cur)){
-                curNode = curNode.map.get(cur);
-            } else {
-                TrieNode newNode = new TrieNode(cur);
-                curNode.map.put(cur, newNode);
-                curNode = newNode;
+            if (!current.map.containsKey(word.charAt(i))){
+                current.map.put(word.charAt(i), new Node());
             }
-
+            current = current.map.get(word.charAt(i));
         }
-        curNode.isString = true;
-        curNode.str = word;
+        current.isString = true;
+        current.s = word;
     }
 
     /*
@@ -54,18 +42,16 @@ public class Trie {
     public boolean search(String word) {
         // write your code here
         if (word == null || word.length() == 0){
-            return false;
+            return true;
         }
-        TrieNode cur = root;
+        Node current = root;
         for (int i = 0; i < word.length(); i++){
-            char ch = word.charAt(i);
-            if (cur.map.containsKey(ch)){
-                cur = cur.map.get(ch);
-            } else {
+            if (!current.map.containsKey(word.charAt(i))){
                 return false;
             }
+            current = current.map.get(word.charAt(i));
         }
-        return cur.isString;
+        return current.isString;
     }
 
     /*
@@ -75,16 +61,14 @@ public class Trie {
     public boolean startsWith(String prefix) {
         // write your code here
         if (prefix == null || prefix.length() == 0){
-            return false;
+            return true;
         }
-        TrieNode cur = root;
+        Node current = root;
         for (int i = 0; i < prefix.length(); i++){
-            char ch = prefix.charAt(i);
-            if (cur.map.containsKey(ch)){
-                cur = cur.map.get(ch);
-            } else {
+            if (!current.map.containsKey(prefix.charAt(i))){
                 return false;
             }
+            current = current.map.get(prefix.charAt(i));
         }
         return true;
     }

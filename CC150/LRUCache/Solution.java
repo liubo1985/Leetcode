@@ -13,7 +13,8 @@ public class LRUCache {
 
     /*
      * @param capacity: An integer
-     */public LRUCache(int capacity) {
+     */
+    public LRUCache(int capacity) {
         // do intialization if necessary
         this.capacity = capacity;
         size = 0;

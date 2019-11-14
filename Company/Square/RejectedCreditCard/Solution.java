@@ -3,6 +3,18 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+//A group of friends went to a small restaurant for dinner. They split the bill with a bunch of credit cards after the dinner.
+// Unfortunately some of these cards were rejected. Even more unfortunately the small restaurant uses a very poor point
+// of sale, outputting very limited information. It only reports the number of rejected tenders and the total rejected amount.
+// The cashier has already known how much should be charged on each card. Could you help the cashier figure out which
+// cards are rejected?
+
+//Example:
+//Tenders: {1, $18}, {2, $14}, {3, $21}, {4, $10}, {5, $32}
+//Num of rejected cards : 2
+//Rejected amount : $50
+//Expected Output: <1, 5>
+
 public class RejectedCreditCard {
     class Tender {
         int id;
