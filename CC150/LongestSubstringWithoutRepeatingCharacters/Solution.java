@@ -18,9 +18,9 @@ public class Solution{
             for (fast = 0; fast < s.length(); fast++) {
                 int ch = s.charAt(fast);
                 while (map[ch]!=-1 && slow < fast) {
-                int temp = s.charAt(slow);
-                map[temp] = -1;
-                slow ++;
+                    int temp = s.charAt(slow);
+                    map[temp] = -1;
+                    slow ++;
                 }
                 map[ch] = 0;
                 ans = Math.max(ans, fast-slow + 1);
