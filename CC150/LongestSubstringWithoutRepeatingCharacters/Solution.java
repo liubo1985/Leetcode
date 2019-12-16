@@ -7,25 +7,30 @@ import java.util.Arrays;
  */
 public class Solution{
     public int lengthOfLongestSubstring(String s) {
-            int[] map = new int[256]; // map from character's ASCII to its last occured index
-            Arrays.fill(map, -1);
 
-            int slow = 0;
-            int fast = 0;
-            int ans = 0;
+        int[] map = new int[256]; // map from character's ASCII to its last occured index
+        Arrays.fill(map, -1);
+
+        int slow = 0;
+        int ans = 0;
+
         //mainten a window of non repeat characters, if find repeat charcter, move left pointer to
         //next character of repeated charater, then move right pointer to next one
-            for (fast = 0; fast < s.length(); fast++) {
-                int ch = s.charAt(fast);
-                while (map[ch]!=-1 && slow < fast) {
-                int temp = s.charAt(slow);
-                map[temp] = -1;
-                slow ++;
+        for (int fast = 0; fast < s.length(); fast++) {
+            int ch = s.charAt(fast);
+            while (slow < fast) {
+                if (map[ch] == 0) {
+                    int temp = s.charAt(slow);
+                    map[temp] = -1;
+                    slow ++;
+                } else {
+                    break;
                 }
-                map[ch] = 0;
-                ans = Math.max(ans, fast-slow + 1);
             }
+            map[ch] = 0;
+            ans = Math.max(ans, fast - slow + 1);
+        }
 
-            return ans;
-            }
+        return ans;
+    }
 }
